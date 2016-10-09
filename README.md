@@ -34,12 +34,12 @@ The data considered for analysis are as follows:
   * The data obtained from step 3a and 3c are loaded through cbind function. 
   * The data obtained from 3g and 3e are merged through cbind. 
 4. Recording the data related to training observation: The step is similar to step 2, however, the data is obtained from  ./train/subject_train.txt, ./train/X_train.txt, ./train/y_train.txt.
-4. The test and train data are merged by merging the data obtained from step 2 and step 3 using rbind() function. 10299x563 is the dimention of the data frame. 
-5. For extracting columns related to mean and standard deviation the names(data) is passed as a parameter to the grep function. The names of the variables extracted are stored into cols vector.
+5. The test and train data are merged by merging the data obtained from step 2 and step 3 using rbind() function. 10299x563 is the dimention of the data frame. 
+6. For extracting columns related to mean and standard deviation the names(data) is passed as a parameter to the grep function. The names of the variables extracted are stored into cols vector.
 ###Note:Data is angle(tBodyAccJerkMean),gravityMean),angle(tBodyGyroMean,gravityMean),angle(tBodyGyroJerkMean,gravityMean) are not included in this analysis as the values are angles rather than mean or standard deviation of any feature. The details of the variables are included in Codebook.md   
-6. For extracting the required columns and performing further operations 'dplyr' package is used. 
-7. The required columns (subject,activity_classified and data obtained from step 5) are selected using the 'select' function. The  subject and activity_classified are brought in front for the further analysis. 
-8. Renaming the activites_classified: The activities classified are named using 'sub' function. The substitution value is found in 'activity_labels.txt'
-9. For averaging the values per subject per activity, grouping is applied on subject and activity_classified variables. Grouping is applied using the group_by function.
-10. Mean (Average) for all the observation  per subject, per activity_classified is calculated using the summarize_all function on data frame obtained at step 9 and mean as the parameters. 
-11. The data is written into results.txt using the write.table function.
+7. For extracting the required columns and performing further operations 'dplyr' package is used. 
+8. The required columns (subject,activity_classified and data obtained from step 6) are selected using the 'select' function. The  subject and activity_classified are brought in front for the further analysis. 
+9. Renaming the activites_classified: The activities classified are named using 'sub' function. The substitution value is found in 'activity_labels.txt'
+10. For averaging the values per subject per activity, grouping is applied on subject and activity_classified variables. Grouping is applied using the group_by function.
+11. Mean (Average) for all the observation  per subject, per activity_classified is calculated using the summarize_all function on data frame obtained at step 10 and mean as the parameters. 
+12. The data is written into results.txt using the write.table function.
