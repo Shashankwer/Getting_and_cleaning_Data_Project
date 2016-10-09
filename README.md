@@ -21,9 +21,9 @@ The data considered for analysis are as follows:
 ###Note: the data under ./test/Inertial Signals/ and the data under ./train/Inertial Signals/ are ignored, as they contain raw unprocessed data
 
 ##Steps followed for obtaining clean data are
-0. Setting the directory to the directory containing the data.
-1. Inorder to name the variables obtained from the test and train data the variable names are loaded into features data frame.
-2. Recording the data of test:
+1. Setting the directory to the directory containing the data.
+2. Inorder to name the variables obtained from the test and train data the variable names are loaded into features data frame.
+3. Recording the data of test:
   * The recorded  data for 561 features are loaded in test_data, which are loaded from "./test/X_test.txt"
   * 561 columns/ variables are named by the data obtained from step1. 
   * The subject related to observation recorded in step 2a are loaded into test_user. The data is obtained from 
@@ -36,3 +36,5 @@ The data considered for analysis are as follows:
 3. Recording the data related to training observation: The step is similar to step 2, however, the data is obtained from  ./train/subject_train.txt, ./train/X_train.txt, ./train/y_train.txt.
 4. The test and train data are merged by merging the data obtained from step 2 and step 3 using rbind() function. 10299x563 is the dimention of the data vector. 
 
+1. In order to load the variable names as the classification given in the features.txt, the features.txt is loaded into "features" data frame.
+2. 
