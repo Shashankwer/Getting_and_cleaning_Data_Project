@@ -24,17 +24,22 @@ The data considered for analysis are as follows:
 1. Setting the directory to the directory containing the data.
 2. Inorder to name the variables obtained from the test and train data the variable names are loaded into features data frame.
 3. Recording the data of test:
-  3* The recorded  data for 561 features are loaded in test_data, which are loaded from "./test/X_test.txt"
-  3* 561 columns/ variables are named by the data obtained from step1. 
-  3* The subject related to observation recorded in step 2a are loaded into test_user. The data is obtained from 
+  * The recorded  data for 561 features are loaded in test_data, which are loaded from "./test/X_test.txt"
+  * 561 columns/ variables are named by the data obtained from step1. 
+  * The subject related to observation recorded in step 3a are loaded into test_user. The data is obtained from 
   ./test/y_test.txt and is loaded through read.table. 
-  3* The column name of the test_user is set to subject. 
-  3* The classification result for the observations recorded in step 2a are stored in test_classification data frame. The data is loaded from ./test/y_test.txt  using read.table
-  3* Variable for the Data recorded in step 2e is named as activity_classified
-  3* The data obtained from step 2a and 2c are loaded through cbind function. 
-  3* The data obtained from 2g and 2e are merged through cbind. 
-3. Recording the data related to training observation: The step is similar to step 2, however, the data is obtained from  ./train/subject_train.txt, ./train/X_train.txt, ./train/y_train.txt.
-4. The test and train data are merged by merging the data obtained from step 2 and step 3 using rbind() function. 10299x563 is the dimention of the data vector. 
-
-1. In order to load the variable names as the classification given in the features.txt, the features.txt is loaded into "features" data frame.
-2. 
+  * The column name of the test_user is set to subject. 
+  * The classification result for the observations recorded in step 3a are stored in test_classification data frame. The data is loaded from ./test/y_test.txt  using read.table
+  * Variable for the Data recorded in step 3e is named as activity_classified
+  * The data obtained from step 3a and 3c are loaded through cbind function. 
+  * The data obtained from 3g and 3e are merged through cbind. 
+4. Recording the data related to training observation: The step is similar to step 2, however, the data is obtained from  ./train/subject_train.txt, ./train/X_train.txt, ./train/y_train.txt.
+4. The test and train data are merged by merging the data obtained from step 2 and step 3 using rbind() function. 10299x563 is the dimention of the data frame. 
+5. For extracting columns related to mean and standard deviation the names(data) is passed as a parameter to the grep function. The names of the variables extracted are stored into cols vector.
+###Note:Data is angle(tBodyAccJerkMean),gravityMean),angle(tBodyGyroMean,gravityMean),angle(tBodyGyroJerkMean,gravityMean) are not included in this analysis as the values are angles rather than mean or standard deviation of any feature. The details of the variables are included in Codebook.md   
+6. For extracting the required columns and performing further operations 'dplyr' package is used. 
+7. The required columns (subject,activity_classified and data obtained from step 5) are selected using the 'select' function. The  subject and activity_classified are brought in front for the further analysis. 
+8. Renaming the activites_classified: The activities classified are named using 'sub' function. The substitution value is found in 'activity_labels.txt'
+9. For averaging the values per subject per activity, grouping is applied on subject and activity_classified variables. Grouping is applied using the group_by function.
+10. Mean (Average) for all the observation  per subject, per activity_classified is calculated using the summarize_all function on data frame obtained at step 9 and mean as the parameters. 
+11. The data is written into results.txt using the write.table function.
